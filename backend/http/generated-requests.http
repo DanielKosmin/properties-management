@@ -1,0 +1,12 @@
+###
+GET http://localhost:8888/properties-config/v1/retrieve
+
+###
+POST http://localhost:8888/properties-config/v1/update
+content-type: application/json
+
+{
+  "fileName": "test-app-dev.yml",
+  "newValue": "new value",
+  "propertyKey": "test.property"
+}
