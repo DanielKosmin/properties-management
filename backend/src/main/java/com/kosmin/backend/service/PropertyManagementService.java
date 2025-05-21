@@ -55,6 +55,7 @@ public class PropertyManagementService {
       objectMapper.writeValue(targetFile, propertyValue);
       repoManagementService.commitAndPushPropertyUpdate(
           String.format("Update %s's Key: %s with value: %s", fileName, key, newValue));
+      repoManagementService.refreshRepo();
 
       return response.newValue(newValue).status(Status.UPDATED_SUCCESSFULLY).build();
     } catch (Exception ignored) {

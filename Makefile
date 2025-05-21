@@ -10,9 +10,9 @@ WEB_SERVER_DIR := backend
 WEB_UI_DIR := frontend
 
 .PHONY: server
-server:
+server: ## Compile Backed Web Server
 	@cd $(WEB_SERVER_DIR) && mvn compile
 
 .PHONY: ui
-ui:
+ui: ## Build and Start UI
 	@cd $(WEB_UI_DIR) && npm install && npm run dev
