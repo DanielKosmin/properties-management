@@ -1,0 +1,23 @@
+.input-field {
+  padding: 8px;
+  margin: 5px 0;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  display: block;
+  margin-top: 4px;
+}
+
+.status-success {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.status-error {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}

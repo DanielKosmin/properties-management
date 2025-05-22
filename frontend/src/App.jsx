@@ -4,7 +4,6 @@ import PropertiesComponent from "./components/PropertiesViewer";
 function App() {
   return (
     <>
-      <PropertiesComponent />
       <PropertyEditor />
     </>
   );
