@@ -2,6 +2,9 @@
 GET http://localhost:8888/properties-config/v1/retrieve
 
 ###
+GET http://localhost:8888/properties-config/v1/properties-content?fileName=authorization-dev.yml
+
+###
 POST http://localhost:8888/properties-config/v1/update
 content-type: application/json
 
