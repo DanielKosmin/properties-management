@@ -3,6 +3,7 @@ package com.kosmin.backend.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
 import com.kosmin.backend.model.Status;
 import com.kosmin.backend.model.UpdatedYmlResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +34,7 @@ public class PropertyManagementService {
 
   public PropertyManagementService(Git git, RepoManagementService repoManagementService) {
     this.git = git;
-    this.objectMapper = new ObjectMapper(new YAMLFactory());
+    this.objectMapper = new ObjectMapper(new YAMLFactory().disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER));
     this.repoManagementService = repoManagementService;
   }
 
