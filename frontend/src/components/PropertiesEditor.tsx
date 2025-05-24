@@ -44,12 +44,29 @@ const PropertyEditor = () => {
       )
       .then((res) => {
         setShowKeyToUpdate(true);
-        setShowValueToUpdate(true);
         setFileContent(res.data);
       })
       .catch((err) => {
         console.error(err);
       });
+  };
+
+  // grab custom data prop from option to display corresponding key with value pair
+  const handleKeySelection = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedOption = e.target.selectedOptions[0];
+    let correspondingValue =
+      selectedOption.getAttribute("data-value")?.trim() ?? "";
+    if (
+      (correspondingValue.startsWith("'") &&
+        correspondingValue.endsWith("'")) ||
+      (correspondingValue.startsWith('"') && correspondingValue.endsWith('"'))
+    ) {
+      setValue(correspondingValue.substring(1, correspondingValue.length - 1));
+    } else {
+      setValue(correspondingValue);
+    }
+    setKey(e.target.value);
+    setShowValueToUpdate(true);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -105,12 +122,27 @@ const PropertyEditor = () => {
         {showKeyToUpdate && (
           <>
             <label htmlFor="key">Key:</label>
-            <input
-              id="key"
+            <select
+              id="keySelection"
               className="input-field"
               value={key}
-              onChange={(e) => setKey(e.target.value)}
-            />
+              onChange={handleKeySelection}
+            >
+              <option value="">-- Select a key --</option>
+              {fileContent.map((line, index) => {
+                const lineContent = line.split("=");
+                const key = lineContent[0].trim();
+                return (
+                  <option
+                    key={index}
+                    value={key}
+                    data-value={lineContent[1].trim()}
+                  >
+                    {key}
+                  </option>
+                );
+              })}
+            </select>
           </>
         )}
 
