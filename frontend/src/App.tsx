@@ -1,9 +1,10 @@
-import PropertyEditor from "./components/PropertiesEditor";
+import { StrictMode } from "react";
+import PropertiesEdit from "./components/PropertiesEdit";
 
 function App() {
   return (
     <>
-      <PropertyEditor />
+      <PropertiesEdit />
     </>
   );
 }
